@@ -4,7 +4,8 @@
   "description": "DBH Licenced Building Practitioners Register scrapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,13 @@
   "bugs": {
     "url": "https://github.com/tfentonz/lbp-scrapper/issues"
   },
-  "homepage": "https://github.com/tfentonz/lbp-scrapper"
+  "homepage": "https://github.com/tfentonz/lbp-scrapper",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "express": "^4.12.3",
+    "request": "^2.55.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.7.0"
+  }
 }
