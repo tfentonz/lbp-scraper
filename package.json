@@ -4,6 +4,7 @@
   "description": "DBH Licenced Building Practitioners Register scrapper",
   "main": "index.js",
   "scripts": {
+    "jshint": "jshint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
