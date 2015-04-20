@@ -1,0 +1,28 @@
+{
+  "name": "lbp-scrapper",
+  "version": "0.0.1",
+  "description": "DBH Licenced Building Practitioners Register scrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tfentonz/lbp-scrapper.git"
+  },
+  "keywords": [
+    "dbh",
+    "licenced",
+    "building",
+    "practitioners",
+    "register",
+    "scrapper",
+    "lbp"
+  ],
+  "author": "Tom Fenton <tom.fenton@xtra.co.nz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tfentonz/lbp-scrapper/issues"
+  },
+  "homepage": "https://github.com/tfentonz/lbp-scrapper"
+}
