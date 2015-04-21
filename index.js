@@ -14,14 +14,14 @@ app.get('/lbp/:id', function (req, res) {
       return;
     }
     var $ = cheerio.load(html);
-    var lbpNumber, name, location, phoneNumber, faxNumber, emailAddress,
+    var lbpNumber, lbpName, lbpLocation, phoneNumber, faxNumber, emailAddress,
       website;
     var companies = [], qualifications = [];
 
     lbpNumber    = $('#ctl00_MainContent_ucLbpDetails_fkLbpNumber_View').text();
     // Replace line break elements.
     // Replace comma space postcode at end of string.
-    location  = $('#ctl00_MainContent_ucLbpDetails_fkLocation_View').html()
+    lbpLocation  = $('#ctl00_MainContent_ucLbpDetails_fkLocation_View').html()
                      .replace(/<br>/g, '\n')
                      .replace(/,( \d{4})$/, '$1');
     phoneNumber  = $('#ctl00_MainContent_ucLbpDetails_fkPhoneNumber_View')
@@ -34,7 +34,7 @@ app.get('/lbp/:id', function (req, res) {
     $('.formContainer').filter(function () {
       // John Smith - Licensed Building Practitioner
       var txt = $(this).children('h2').text();
-      name = txt.slice(0, txt.indexOf(' - '));
+      lbpName = txt.slice(0, txt.indexOf(' - '));
     });
 
     // Companies.
@@ -51,12 +51,12 @@ app.get('/lbp/:id', function (req, res) {
 
     res.json({
       lbp_number: lbpId,
-      name: name,
+      name: lbpName,
       phone_number: phoneNumber || null,
       fax_number: faxNumber || null,
       email_address: emailAddress || null,
       website: website || null,
-      location: location,
+      location: lbpLocation,
       companies: companies,
       qualifications: qualifications,
       _links: {
