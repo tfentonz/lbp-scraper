@@ -19,9 +19,11 @@ app.get('/lbp/:id', function (req, res) {
     var companies = [], qualifications = [];
 
     lbpNumber    = $('#ctl00_MainContent_ucLbpDetails_fkLbpNumber_View').text();
-    location     = $('#ctl00_MainContent_ucLbpDetails_fkLocation_View').html()
-                     .replace(/<br>/g, '\n');
-    // TODO: Replace comma space postcode with space postcode.
+    // Replace line break elements.
+    // Replace comma space postcode at end of string.
+    location  = $('#ctl00_MainContent_ucLbpDetails_fkLocation_View').html()
+                     .replace(/<br>/g, '\n')
+                     .replace(/,( \d{4})$/, '$1');
     phoneNumber  = $('#ctl00_MainContent_ucLbpDetails_fkPhoneNumber_View')
                      .text();
     faxNumber    = $('#ctl00_MainContent_ucLbpDetails_fkFaxNumber_View').text();
