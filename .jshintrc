@@ -5,6 +5,10 @@
   "camelcase": false,
   "eqeqeq": true,
   "eqnull": true,
+  "globals": {
+    "describe": false,
+    "it": false
+  },
   "immed": true,
   "indent": 2,
   "latedef": "nofunc",

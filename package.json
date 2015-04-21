@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "jshint": "jshint .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "mocha --reporter spec test"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,8 @@
     "request": "^2.55.0"
   },
   "devDependencies": {
-    "jshint": "^2.7.0"
+    "chai": "^2.2.0",
+    "jshint": "^2.7.0",
+    "mocha": "^2.2.4"
   }
 }
