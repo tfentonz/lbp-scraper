@@ -3,10 +3,15 @@
 var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
-var app = express();
+var morgan = require('morgan');
 var url = 'https://lbp.dbh.govt.nz/PublicRegister/View.aspx?lbpid=';
 
-app.get('/lbp/:id', function (req, res) {
+var app = express();
+
+app.set('port', process.env.PORT || 3000);
+app.use(morgan('dev'));
+
+app.get('/lbp/:id.json', function (req, res) {
   var lbpId = req.params.id;
   request(url + lbpId, function (err, response, html) {
     if (err) {
@@ -16,7 +21,7 @@ app.get('/lbp/:id', function (req, res) {
     var $ = cheerio.load(html);
     var lbpNumber, lbpName, lbpLocation, phoneNumber, faxNumber, emailAddress,
       website;
-    var companies = [], qualifications = [];
+    var companies = [], qualifications = [], endorsements = [];
 
     lbpNumber    = $('#ctl00_MainContent_ucLbpDetails_fkLbpNumber_View').text();
     // Replace line break elements.
@@ -40,13 +45,28 @@ app.get('/lbp/:id', function (req, res) {
     // Companies.
     $('[id^=ctl00_MainContent_ucLbpDetails_ucCompanyInvolvement_rpCompanies' +
       '_ctl]').filter(function () {
-      companies.push($(this).text());
+      companies.push($(this).text().replace(/ LTD$/, ' Ltd'));
     });
 
     // Qualifications.
     $('#ctl00_MainContent_ucLbpDetails_ucQualifications_gvQualifications' +
       ' table tbody tr td').filter(function () {
       qualifications.push($(this).text());
+    });
+
+    // Endorsements.
+    $('a.endorsementThickBox').filter(function () {
+      var a = $(this);
+      var tr = a.parent().parent();
+      var endorsement = {};
+      var dateGranted;
+      endorsement.name = a.text();
+      endorsement.status_of_licence = tr.children().first().next().text();
+      endorsement.status_reason = tr.children().first().next().next().text()
+                                    .trim();
+      dateGranted = new Date(tr.children().first().next().next().next().text());
+      endorsement.date_granted = dateGranted.toISOString().slice(0, 10);
+      endorsements.push(endorsement);
     });
 
     res.json({
@@ -59,6 +79,7 @@ app.get('/lbp/:id', function (req, res) {
       location: lbpLocation,
       companies: companies,
       qualifications: qualifications,
+      endorsements: endorsements,
       _links: {
         self: {
           href: url + lbpId
@@ -68,6 +89,8 @@ app.get('/lbp/:id', function (req, res) {
   });
 });
 
-var port = process.env.PORT || 3000;
+console.log(app.get('port'));
 
-app.listen(port);
+app.listen(app.get('port'), function () {
+  console.log('LBP scraper listening on port ' + app.get('port'));
+});
