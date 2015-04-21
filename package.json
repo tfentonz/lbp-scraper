@@ -1,7 +1,7 @@
 {
-  "name": "lbp-scrapper",
+  "name": "lbp-scraper",
   "version": "0.0.1",
-  "description": "DBH Licenced Building Practitioners Register scrapper",
+  "description": "DBH Licenced Building Practitioners Register scraper",
   "main": "index.js",
   "scripts": {
     "jshint": "jshint .",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tfentonz/lbp-scrapper.git"
+    "url": "https://github.com/tfentonz/lbp-scraper.git"
   },
   "keywords": [
     "dbh",
@@ -18,15 +18,15 @@
     "building",
     "practitioners",
     "register",
-    "scrapper",
+    "scraper",
     "lbp"
   ],
   "author": "Tom Fenton <tom.fenton@xtra.co.nz>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tfentonz/lbp-scrapper/issues"
+    "url": "https://github.com/tfentonz/lbp-scraper/issues"
   },
-  "homepage": "https://github.com/tfentonz/lbp-scrapper",
+  "homepage": "https://github.com/tfentonz/lbp-scraper",
   "dependencies": {
     "cheerio": "^0.19.0",
     "express": "^4.12.3",
