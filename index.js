@@ -4,7 +4,7 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 var morgan = require('morgan');
-var url = 'https://lbp.dbh.govt.nz/PublicRegister/View.aspx?lbpid=';
+var url = 'https://lbp.ewr.govt.nz/PublicRegister/View.aspx?lbpid=';
 
 var app = express();
 
