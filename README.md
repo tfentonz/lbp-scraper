@@ -53,4 +53,4 @@ $ npm test
 ## External links
 
 * [www.business.govt.nz/lbp](http://www.business.govt.nz/lbp)
-* [Search Public Register](http://lbp.dbh.govt.nz/publicregister/search.aspx)
+* [Search Public Register](https://lbp.ewr.govt.nz/publicregister/search.aspx)
